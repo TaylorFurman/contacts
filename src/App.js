@@ -1,33 +1,36 @@
-import AppBar from '@material-ui/core/AppBar';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-
 import { Switch, Route, Link } from "react-router-dom";
 
+import NavigationBar from './components/AppBar';
+import AddContact from './components/AddContact';
+import DeleteContact from './components/DeleteContact';
+
+const NoMatch = ({location}) => (
+  <div>
+    <h3>Page not found: {location.pathname}</h3>
+  </div>
+)
 
 function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/"></Route>
-        <Route path="/add">
-          
+        <Route exact path="/">
+        <NavigationBar/>
         </Route>
-        <Route path='/delete/:key'></Route>
-      </Switch>
-      <AppBar position = 'relative'>
-      <Toolbar>
-      <CameraIcon/>
-      <Typography variant='h6' color='inherit' noWrap>
-        Hello App
-      </Typography>
-      </Toolbar>
-    </AppBar>
+        <Route path="/add">
+        <NavigationBar/>
+          <AddContact/>
+        </Route>
+        <Route path='/delete/:key'>
+        <NavigationBar/>
+          <DeleteContact/>
+        </Route>
+        <Route component={NoMatch}></Route>
 
+      </Switch>
+      
+    
     </div>
-    
-    
   );
 }
 
