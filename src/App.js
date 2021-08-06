@@ -1,6 +1,7 @@
 import { Switch, Route, Link } from "react-router-dom";
 
 import NavigationBar from './components/AppBar';
+import MyForm from './components/AddContact'
 import AddContact from './components/AddContact';
 import DeleteContact from './components/DeleteContact';
 
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route exact path="/">
         <NavigationBar/>
+        <MyForm/>
         </Route>
         <Route path="/add">
         <NavigationBar/>
