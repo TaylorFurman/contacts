@@ -17,21 +17,17 @@ function App() {
       <Switch>
         <Route exact path="/">
         <NavigationBar/>
-        <MyForm/>
         </Route>
         <Route path="/add">
         <NavigationBar/>
-          <AddContact/>
+          <MyForm/>
         </Route>
         <Route path='/delete/:key'>
         <NavigationBar/>
           <DeleteContact/>
         </Route>
         <Route component={NoMatch}></Route>
-
       </Switch>
-      
-    
     </div>
   );
 }
