@@ -1,9 +1,10 @@
 import { Switch, Route, Link } from "react-router-dom";
+import { Provider } from 'react-redux';
 
 import NavigationBar from './components/AppBar';
-import MyForm from './components/AddContact'
 import AddContact from './components/AddContact';
 import DeleteContact from './components/DeleteContact';
+import store from './store.js'
 
 const NoMatch = ({location}) => (
   <div>
@@ -14,20 +15,22 @@ const NoMatch = ({location}) => (
 function App() {
   return (
     <div>
-      <Switch>
-        <Route exact path="/">
-        <NavigationBar/>
-        </Route>
-        <Route path="/add">
-        <NavigationBar/>
-          <MyForm/>
-        </Route>
-        <Route path='/delete/:key'>
-        <NavigationBar/>
-          <DeleteContact/>
-        </Route>
-        <Route component={NoMatch}></Route>
-      </Switch>
+      <Provider store={store}>
+        <Switch>
+          <Route exact path="/">
+          <NavigationBar/>
+          </Route>
+          <Route path="/add">
+          <NavigationBar/>
+            <AddContact/>
+          </Route>
+          <Route path='/delete/:key'>
+          <NavigationBar/>
+            <DeleteContact/>
+          </Route>
+          <Route component={NoMatch}></Route>
+        </Switch>
+      </Provider>
     </div>
   );
 }

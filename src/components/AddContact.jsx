@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 
 // name, e-mail, phone number, address, city, state, and zip code
-class MyForm extends Component{
+class AddContact extends Component{
     constructor(){
         super();
         this.state={name: '', email: '', phoneNumber:'',address:'',city:'', state:'', zipCode:''};
@@ -70,4 +71,4 @@ class MyForm extends Component{
     }
 }
 
-export default MyForm;
+export default AddContact;
