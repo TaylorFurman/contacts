@@ -14,17 +14,19 @@ var initialState ={
 
 function contact_reducer(state = initialState, action) {
     console.log(action);
+
+    let new_state = deepcopy(state);
     switch (action.type) {
       case "ADD_CONTACT":
         return {
-          ...state,
+          ...new_state,
           contact_list: [...state.contact_list, { name: action.data.contact_list }],
         };
       case "DELETE_CONTACT":
         let arr = state.contact_list;
         let newContact_list = state.contact_list.splice(Number(action.id), 1);
         return {
-          ...state,
+          ...new_state,
           contact_list: arr,
         };
       default:
