@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { addContact } from '../actions.js'
 
 // name, e-mail, phone number, address, city, state, and zip code
 class AddContact extends Component{
@@ -11,6 +12,20 @@ class AddContact extends Component{
         this.setState({[key]: event.target.value});
     }
     handleSubmit(event){
+        console.log(event);
+        event.preventDefault();
+        if(!this.state.name){
+            alert("Input something");
+        }else{
+            this.props.addContact({name: this.state.name, 
+                email: this.state.email,
+                phoneNumber: this.state.phoneNumber, 
+                address: this.state.address,
+                city: this.state.city,
+                state: this.state.state,
+                zipCode: this.state.zipCode})
+        }
+        
         console.log('submitted: ' + this.state.name + 
         this.state.email + 
         this.state.phoneNumber + 
@@ -18,7 +33,7 @@ class AddContact extends Component{
         this.state.city + 
         this.state.state + 
         this.state.zipCode);
-        event.preventDefault();
+        
     }
     render(){
         return(
@@ -71,4 +86,22 @@ class AddContact extends Component{
     }
 }
 
-export default AddContact;
+function mapStateToProps(state){
+    return {};
+}
+
+function mapDispatchToProps(dispatch){
+    return{
+        addContact: function (data){
+            dispatch(addContact(data));
+        }
+    }
+}
+
+const connectedAddingContact = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AddContact);
+
+
+export default connectedAddingContact;
