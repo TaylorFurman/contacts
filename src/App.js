@@ -1,4 +1,4 @@
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route} from "react-router-dom";
 import { Provider } from 'react-redux';
 
 import NavigationBar from './components/AppBar';
@@ -19,6 +19,7 @@ function App() {
         <Switch>
           <Route exact path="/">
           <NavigationBar/>
+          
           </Route>
           <Route path="/add">
           <NavigationBar/>

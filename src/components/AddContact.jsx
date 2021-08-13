@@ -34,6 +34,7 @@ class AddContact extends Component{
         this.state.state + 
         this.state.zipCode);
         
+        
     }
     render(){
         return(
